@@ -6,7 +6,7 @@
 <title>Abhinav Kumar | Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Barlow+Condensed:wght@600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --hero:#C8102E;--text:#FFFFFF;--muted:#FFF0F2;--soft:#FFE3E7;--line:rgba(255,255,255,.32);--blk:#0D0709;
@@ -79,15 +79,71 @@ footer{padding:clamp(56px,9vw,100px) 20px;text-align:center}
 .rv{translate:0 40px;opacity:0;transition:translate .8s cubic-bezier(.2,.7,.2,1),opacity .7s}
 .rv.in{translate:none;opacity:1}
 @media (prefers-reduced-motion:reduce){.rv{translate:none;opacity:1;transition:none}.cue::after{animation:none}.proj{transition:none}}
+/* premium pass: serif display, deep gradient, film grain, glass panels, cursor light */
+:root{--display:'Instrument Serif',Georgia,'Times New Roman',serif;--tile:'Barlow Condensed','Arial Narrow',Impact,sans-serif}
+html{background:radial-gradient(120% 70% at 50% -10%,color-mix(in srgb,var(--hero) 80%,#fff) 0%,var(--hero) 48%,color-mix(in srgb,var(--hero) 58%,#000) 100%);background-attachment:fixed;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.5) transparent}
+body{background:transparent;letter-spacing:.005em;-webkit-font-smoothing:antialiased}
+::selection{background:#0D0709;color:#fff}
+body::after{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(closest-side,rgba(255,255,255,.16),transparent);transform:translate3d(-999px,-999px,0);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+@media (hover:none){#glow{display:none}}
+
+.wrap{border:1px solid rgba(255,255,255,.1);border-radius:24px;background:linear-gradient(160deg,#1A0D12,var(--blk) 55%)}
+.board span{font:600 calc(var(--colw)*1.3)/1 var(--tile);color:#F8EEF0;background:linear-gradient(#1E1016 49%,#0A0507 49% 51%,#1E1016 51%);text-shadow:0 1px 0 rgba(255,255,255,.18),0 8px 16px rgba(0,0,0,.55)}
+.tag{font-size:clamp(17px,2.2vw,20px);max-width:44ch;line-height:1.55}
+.pill{background:rgba(13,7,9,.82);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 24px -10px rgba(0,0,0,.6);backdrop-filter:blur(8px);font-weight:500;padding:9px 22px;transition:transform .25s,background .25s,border-color .25s}
+.pill:hover{transform:translateY(-2px);background:#000;border-color:rgba(255,255,255,.4)}
+
+.sec{position:relative}
+.sec::before{content:"";position:absolute;top:0;left:50%;width:min(1040px,calc(100% - 40px));height:1px;background:linear-gradient(90deg,rgba(255,255,255,.4),rgba(255,255,255,.06));transform:translateX(-50%)}
+h2{font:400 clamp(40px,7.2vw,80px)/1 var(--display);letter-spacing:-.015em;margin:0 0 22px}
+h3{font-weight:500}
+.lead{font-size:clamp(18px,2.2vw,21px);line-height:1.6;max-width:54ch}
+
+.panel,.proj,.big a{background:linear-gradient(165deg,#1B0E13,var(--blk) 60%);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 34px 60px -26px rgba(0,0,0,.7)}
+.panel,.proj{position:relative;border-radius:22px}
+.proj{padding:28px}
+.proj::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0),rgba(255,255,255,.09),transparent 65%)}
+.proj:hover::before{opacity:1}
+.proj h3{font:400 clamp(26px,3vw,32px)/1.1 var(--display);letter-spacing:-.005em}
+.panel .big-t{font:400 28px/1.15 var(--display)}
+.st{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);font-weight:500}
+.chips li{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);font-size:14px;padding:3px 12px}
+.grp .chips li{background:rgba(13,7,9,.28)}
+.btn{background:rgba(13,7,9,.9);border:1px solid rgba(255,255,255,.14);box-shadow:0 14px 28px -12px rgba(0,0,0,.6);font-weight:500;padding:13px 28px;transition:translate 1s cubic-bezier(.16,1,.3,1),opacity .9s,transform .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.4)}
+.big a{transition:translate 1s cubic-bezier(.16,1,.3,1),opacity .9s,transform .3s,border-color .3s,box-shadow .3s}
+.big a:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 40px 60px -26px rgba(0,0,0,.8)}
+.big b{font:400 28px/1.1 var(--display)}
+.big a>span:last-child{display:grid;place-items:center;flex:none;width:38px;height:38px;border:1px solid rgba(255,255,255,.25);border-radius:50%;transition:transform .3s,background .3s,color .3s}
+.big a:hover>span:last-child{transform:translate(3px,-3px);background:#fff;color:var(--blk)}
+.rv{translate:0 34px;transition:translate 1s cubic-bezier(.16,1,.3,1),opacity .9s}
+@media (prefers-reduced-motion:reduce){.rv{translate:none;opacity:1;transition:none}#glow{display:none}}
+/* rollable name slot + about facts */
+.wrap{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wrap:focus-visible{outline:3px solid #fff;outline-offset:6px}
+.hint{margin:-12px 0 0;font-size:14px;color:var(--muted);opacity:.8}
+.board .t{position:relative;height:calc(var(--colw)*1.5);overflow:hidden;border-radius:5px;background:linear-gradient(#1E1016 49%,#0A0507 49% 51%,#1E1016 51%)}
+.board .t::after{content:"";position:absolute;left:0;right:0;top:49%;height:2%;background:#0A0507;pointer-events:none}
+.board .s{will-change:transform}
+.board .s.rolling{filter:blur(.6px)}
+.board .c{height:calc(var(--colw)*1.5);display:grid;place-items:center;font:600 calc(var(--colw)*1.3)/1 var(--tile);color:#F8EEF0;text-shadow:0 1px 0 rgba(255,255,255,.18),0 8px 16px rgba(0,0,0,.55)}
+.facts{display:grid;margin:30px 0 0;max-width:54ch}
+.facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.facts dt{color:var(--muted);font-weight:500}
+.facts dd{margin:0;font-weight:500}
+@media (prefers-reduced-motion:reduce){.board .s.rolling{filter:none}}
 </style>
 </head>
 <body>
 <div id="prog" aria-hidden="true"></div>
+<div id="glow" aria-hidden="true"></div>
 <canvas id="gl" aria-hidden="true"></canvas>
 
 <header class="hero" id="top">
   <div class="center">
-    <div class="wrap"><div class="board" role="img" aria-label="Abhinav Kumar"><span>A</span><span>B</span><span>H</span><span>I</span><span>N</span><span>A</span><span>V</span><span></span><span>K</span><span>U</span><span>M</span><span>A</span><span>R</span><span></span></div></div>
+    <div class="wrap" role="button" tabindex="0" aria-label="Abhinav Kumar. Press to roll the letters again."><div class="board" id="board"></div></div>
+    <p class="hint">Tap the name to roll it again</p>
     <p class="tag">B.Tech CSE student at KIIT University. Building projects in data analytics, data science and AI.</p>
     <nav class="links" id="heroLinks" aria-label="Profiles"></nav>
   </div>
@@ -97,8 +153,14 @@ footer{padding:clamp(56px,9vw,100px) 20px;text-align:center}
 <section class="sec" id="about">
   <div class="in-w split">
     <div class="rv">
-      <h2>About</h2>
-      <p class="lead">I am a computer science student building practical skills in data and programming. My projects so far range from Excel and Power BI dashboards to AI-assisted analysis and semantic search.</p>
+      <h2>About me</h2>
+      <p class="lead">Hi, I am Abhinav. I am a computer science student building practical skills in data and programming. My projects so far range from Excel and Power BI dashboards to AI-assisted analysis and semantic search.</p>
+      <dl class="facts">
+        <div><dt>Studying</dt><dd>B.Tech CSE at KIIT University</dd></div>
+        <div><dt>Focus</dt><dd>Data analytics, data science and AI</dd></div>
+        <div><dt>Building now</dt><dd>An AI data analyst and a semantic search engine</dd></div>
+        <div><dt>Toolbox</dt><dd>Python, SQL, Power BI, Excel</dd></div>
+      </dl>
     </div>
     <div class="panel rv">
       <h3>Education</h3>
@@ -170,15 +232,44 @@ footer{padding:clamp(56px,9vw,100px) 20px;text-align:center}
 
   // scroll reveal
   const io = 'IntersectionObserver' in window
-    ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .15})
+    ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); const t = e.target; setTimeout(() => { t.style.transitionDelay = ''; }, 1400); io.unobserve(e.target); } }), {threshold: .15})
     : null;
   document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 3) * .08 + 's'; io ? io.observe(el) : el.classList.add('in'); });
 
   // project cards tilt toward the pointer
   if (!reduce) document.querySelectorAll('.proj').forEach(el => {
-    el.addEventListener('pointermove', e => { const b = el.getBoundingClientRect(); el.style.setProperty('--ry', ((e.clientX - b.left) / b.width - .5) * 10); el.style.setProperty('--rx', (.5 - (e.clientY - b.top) / b.height) * 8); });
+    el.addEventListener('pointermove', e => { const b = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - b.left) + 'px'); el.style.setProperty('--my', (e.clientY - b.top) + 'px'); el.style.setProperty('--ry', ((e.clientX - b.left) / b.width - .5) * 10); el.style.setProperty('--rx', (.5 - (e.clientY - b.top) / b.height) * 8); });
     el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', 0); el.style.setProperty('--ry', 0); });
   });
+
+  // the name slot: letters roll into place on load, and again on tap or Enter
+  const NAME = 'ABHINAV KUMAR', COLS = 14, ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const rnd = () => ABC[Math.floor(Math.random() * 26)];
+  const cellsOf = arr => arr.map(c => `<div class="c">${c === ' ' ? '' : c}</div>`).join('');
+  const tiles = Array.from({length: COLS}, (_, k) => {
+    const ch = NAME[k] ?? ' ';
+    const t = document.createElement('div'); t.className = 't';
+    const s = document.createElement('div'); s.className = 's';
+    s.innerHTML = cellsOf([ch]); t.appendChild(s); $('board').appendChild(t);
+    return {s, ch};
+  });
+  const rollTile = (tile, k) => new Promise(res => {
+    if (tile.ch === ' ') return res();
+    const extra = 8 + k, N = extra + 3;
+    tile.s.innerHTML = cellsOf([tile.ch, ...Array.from({length: extra}, rnd), tile.ch, rnd()]);
+    tile.s.classList.add('rolling');
+    const a = tile.s.animate(
+      [{transform: 'translateY(0)'}, {transform: `translateY(-${(N - 2) / N * 100}%)`}],
+      {duration: reduce ? 300 + k * 20 : 900 + k * 90, easing: 'cubic-bezier(.4,.1,.2,1.04)', fill: 'forwards'}
+    );
+    a.onfinish = () => { tile.s.classList.remove('rolling'); tile.s.innerHTML = cellsOf([tile.ch]); a.cancel(); res(); };
+  });
+  let busy = false;
+  const rollName = async () => { if (busy) return; busy = true; await Promise.all(tiles.map(rollTile)); busy = false; };
+  const slot = document.querySelector('.hero .wrap');
+  slot.addEventListener('click', rollName);
+  slot.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rollName(); } });
+  setTimeout(rollName, 500);
 
   // scroll progress + buttons
   const prog = $('prog');
@@ -190,7 +281,7 @@ footer{padding:clamp(56px,9vw,100px) 20px;text-align:center}
 
   // one WebGL scene behind the whole page: black spheres that drift as you scroll
   let px = 0, py = 0, cx = 0, cy = 0, hover = false, gl = null;
-  addEventListener('pointermove', e => { px = e.clientX / innerWidth - .5; py = e.clientY / innerHeight - .5; hover = true; });
+  addEventListener('pointermove', e => { px = e.clientX / innerWidth - .5; py = e.clientY / innerHeight - .5; hover = true; if (!reduce) $('glow').style.transform = 'translate3d(' + (e.clientX - 260) + 'px,' + (e.clientY - 260) + 'px,0)'; });
   try {
     if (window.THREE && !reduce) {
       const rd = new THREE.WebGLRenderer({canvas: $('gl'), alpha: true, antialias: true});
