@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C8102E'/%3E%3Crect x='8' y='8' width='48' height='48' rx='10' fill='%230D0709'/%3E%3Ctext x='32' y='46' font-family='Arial Narrow,Arial,sans-serif' font-weight='700' font-size='40' text-anchor='middle' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
 <title>Abhinav Kumar | Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,6 +134,13 @@ h3{font-weight:500}
 .facts dt{color:var(--muted);font-weight:500}
 .facts dd{margin:0;font-weight:500}
 @media (prefers-reduced-motion:reduce){.board .s.rolling{filter:none}}
+.rbtns{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 0}
+.mailbig{display:inline-block;margin-top:28px;font:400 clamp(22px,6.2vw,56px)/1.15 var(--display);color:#fff;text-decoration:none;overflow-wrap:anywhere;background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;transition:background-size .4s,translate 1s cubic-bezier(.16,1,.3,1),opacity .9s}
+.mailbig:hover{background-size:100% 2px}
+@media (prefers-reduced-motion:reduce){.mailbig{transition:none}}
+.school{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.pill-main{background:#fff;color:var(--blk);border-color:#fff}
+.pill-main:hover{background:#fff;border-color:#fff}
 </style>
 </head>
 <body>
@@ -168,7 +176,21 @@ h3{font-weight:500}
       <p>KIIT University, Bhubaneswar</p>
       <p>Aug 2024 to June 2028</p>
       <p>CGPA 8.49</p>
+      <div class="school">
+        <p><b>12th:</b> 86%</p>
+        <p><b>10th:</b> 90%</p>
+        <p>NIPS, Hosur</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="mail">
+  <div class="in-w">
+    <h2 class="rv">Get in touch</h2>
+    <p class="lead rv">The quickest way to reach me is email.</p>
+    <a class="mailbig rv" id="mailLink" href="mailto:abhinav20kumar06@gmail.com">abhinav20kumar06@gmail.com</a>
+    <p class="rbtns rv"><a class="btn" href="mailto:abhinav20kumar06@gmail.com">Send an email</a><button class="btn" id="copyMail" type="button">Copy address</button></p>
   </div>
 </section>
 
@@ -185,6 +207,22 @@ h3{font-weight:500}
   <div class="in-w">
     <h2 class="rv">Skills</h2>
     <div class="skills" id="skillGrid"></div>
+  </div>
+</section>
+
+<section class="sec" id="resume">
+  <div class="in-w split">
+    <div class="rv">
+      <h2>Resume</h2>
+      <p class="lead">My resume for data analyst roles. It opens in Google Drive.</p>
+      <p class="rbtns"><a class="btn" href="https://drive.google.com/file/d/1FWX7U3quT7VmbQ4hw8dr0yzx-WKCWmEz/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open resume</a></p>
+    </div>
+    <div class="panel rv">
+      <span class="st">PDF</span>
+      <p class="big-t" style="margin-top:14px">Data Analyst</p>
+      <p>Abhinav Kumar</p>
+      <p>Dashboards, skills and education</p>
+    </div>
   </div>
 </section>
 
@@ -225,7 +263,8 @@ h3{font-weight:500}
   const chips = a => `<ul class="chips">${a.map(x => `<li>${x}</li>`).join('')}</ul>`;
   const ext = 'target="_blank" rel="noopener noreferrer"';
 
-  $('heroLinks').innerHTML = LINKS.map(l => `<a class="pill" href="${l.u}" ${ext}>${l.n}</a>`).join('');
+  $('heroLinks').innerHTML = '<a class="pill pill-main" href="mailto:abhinav20kumar06@gmail.com">Email me</a>' + LINKS.map(l => `<a class="pill" href="${l.u}" ${ext}>${l.n}</a>`).join('')
+    + `<a class="pill" href="#resume" id="goResume">Resume</a>`;
   $('bigLinks').innerHTML = LINKS.map(l => `<a href="${l.u}" ${ext} class="rv"><span><b>${l.n}</b><small>${l.h}</small></span><span aria-hidden="true">↗</span></a>`).join('');
   $('codeBtn').href = LINKS[0].u;
   $('grid').innerHTML = PROJECTS.map(p => `<article class="proj rv">${p.s ? `<span class="st">${p.s}</span>` : ''}<h3>${p.t}</h3><p>${p.d}</p>${chips(p.k)}</article>`).join('');
@@ -272,6 +311,14 @@ h3{font-weight:500}
   slot.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rollName(); } });
   setTimeout(rollName, 500);
 
+  // copy email address
+  $('copyMail').addEventListener('click', async () => {
+    const b = $('copyMail'), txt = $('mailLink').textContent;
+    try { await navigator.clipboard.writeText(txt); b.textContent = 'Copied'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents($('mailLink')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected, press Ctrl+C'; }
+    setTimeout(() => { b.textContent = 'Copy address'; }, 2200);
+  });
+
   // scroll progress + buttons
   const prog = $('prog');
   const upd = () => { const h = document.documentElement.scrollHeight - innerHeight; prog.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`; };
@@ -279,6 +326,7 @@ h3{font-weight:500}
   const go = top => scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
   $('cue').addEventListener('click', () => go($('about').getBoundingClientRect().top + scrollY));
   $('again').addEventListener('click', () => go(0));
+  $('goResume').addEventListener('click', e => { e.preventDefault(); go($('resume').getBoundingClientRect().top + scrollY); });
 
   // one WebGL scene behind the whole page: black spheres that drift as you scroll
   let px = 0, py = 0, cx = 0, cy = 0, hover = false, gl = null;
