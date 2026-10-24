@@ -210,22 +210,6 @@ h3{font-weight:500}
   </div>
 </section>
 
-<section class="sec" id="resume">
-  <div class="in-w split">
-    <div class="rv">
-      <h2>Resume</h2>
-      <p class="lead">My resume for data analyst roles. It opens in Google Drive.</p>
-      <p class="rbtns"><a class="btn" href="https://drive.google.com/file/d/1FWX7U3quT7VmbQ4hw8dr0yzx-WKCWmEz/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open resume</a></p>
-    </div>
-    <div class="panel rv">
-      <span class="st">PDF</span>
-      <p class="big-t" style="margin-top:14px">Data Analyst</p>
-      <p>Abhinav Kumar</p>
-      <p>Dashboards, skills and education</p>
-    </div>
-  </div>
-</section>
-
 <footer id="contact">
   <h2 class="rv">Find me online</h2>
   <div class="big" id="bigLinks"></div>
@@ -264,7 +248,7 @@ h3{font-weight:500}
   const ext = 'target="_blank" rel="noopener noreferrer"';
 
   $('heroLinks').innerHTML = '<a class="pill pill-main" href="mailto:abhinav20kumar06@gmail.com">Email me</a>' + LINKS.map(l => `<a class="pill" href="${l.u}" ${ext}>${l.n}</a>`).join('')
-    + `<a class="pill" href="#resume" id="goResume">Resume</a>`;
+    + `<a class="pill" href="https://drive.google.com/file/d/1FWX7U3quT7VmbQ4hw8dr0yzx-WKCWmEz/view?usp=sharing" ${ext}>Resume</a>`;
   $('bigLinks').innerHTML = LINKS.map(l => `<a href="${l.u}" ${ext} class="rv"><span><b>${l.n}</b><small>${l.h}</small></span><span aria-hidden="true">↗</span></a>`).join('');
   $('codeBtn').href = LINKS[0].u;
   $('grid').innerHTML = PROJECTS.map(p => `<article class="proj rv">${p.s ? `<span class="st">${p.s}</span>` : ''}<h3>${p.t}</h3><p>${p.d}</p>${chips(p.k)}</article>`).join('');
@@ -326,7 +310,6 @@ h3{font-weight:500}
   const go = top => scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
   $('cue').addEventListener('click', () => go($('about').getBoundingClientRect().top + scrollY));
   $('again').addEventListener('click', () => go(0));
-  $('goResume').addEventListener('click', e => { e.preventDefault(); go($('resume').getBoundingClientRect().top + scrollY); });
 
   // one WebGL scene behind the whole page: black spheres that drift as you scroll
   let px = 0, py = 0, cx = 0, cy = 0, hover = false, gl = null;
